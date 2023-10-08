@@ -24,17 +24,19 @@ function onInput(event) {
 function clearForm() {
     emailInput.value = "";
     messageInput.value = "";
+    feedbackForm.email = "";
+    feedbackForm.message = "";
 }
     
 form.addEventListener('submit', onSubmit)
 
 function onSubmit(event) {
     event.preventDefault();
-    localStorage.removeItem('feedback-form-state');
-    clearForm();
     if (!!feedbackForm.email || !!feedbackForm.message) {
         console.log(feedbackForm);
-        feedbackForm.email = "";
-        feedbackForm.message = "";
+        localStorage.removeItem('feedback-form-state');
+        clearForm();
+        return
     } 
+    alert("Не треба балуватися відправляючи пусту форму 😝")
 }
