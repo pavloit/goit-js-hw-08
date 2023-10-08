@@ -1,16 +1,13 @@
 import throttle from "lodash.throttle";
 
 const form = document.querySelector(".feedback-form");
+const emailInput = document.querySelector('input[name="email"]');
+const messageInput = document.querySelector('textarea[name="message"]');
 const storedData = localStorage.getItem('feedback-form-state');
-const emailInput = document.querySelector('input[name="email"]') 
-const messageInput = document.querySelector('textarea[name="message"]')
-let feedbackForm = {
+const feedbackForm = JSON.parse(storedData) ?? {
     email: "",
     message: "",
-}
-if (!!storedData) {
-    feedbackForm = JSON.parse(storedData)
-}
+};
 
 emailInput.value = feedbackForm.email;
 messageInput.value = feedbackForm.message;
