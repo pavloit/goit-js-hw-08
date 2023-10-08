@@ -33,7 +33,11 @@ form.addEventListener('submit', onSubmit)
 
 function onSubmit(event) {
     event.preventDefault();
-    localStorage.clear();
+    localStorage.removeItem('feedback-form-state');
     clearForm();
-    console.log(feedbackForm);
+    if (!!feedbackForm.email || !!feedbackForm.message) {
+        console.log(feedbackForm);
+        feedbackForm.email = "";
+        feedbackForm.message = "";
+    } 
 }
