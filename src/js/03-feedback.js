@@ -32,11 +32,10 @@ form.addEventListener('submit', onSubmit)
 
 function onSubmit(event) {
     event.preventDefault();
-    if (!!feedbackForm.email || !!feedbackForm.message) {
-        console.log(feedbackForm);
-        localStorage.removeItem('feedback-form-state');
-        clearForm();
-        return
-    } 
-    alert("Не треба балуватися відправляючи пусту форму 😝")
+    if (!feedbackForm.email || !feedbackForm.message) {
+        return alert("Обидва поля мають бути заповнені 😝")    
+    }
+    console.log(feedbackForm);
+    localStorage.removeItem('feedback-form-state');
+    clearForm();   
 }
